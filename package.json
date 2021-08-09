@@ -1,10 +1,10 @@
 {
   "name": "del-specify-code",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "src/index.js",
   "bin": {
-    "ae-html-to-react": "src/index.js"
+    "del-specify-code": "src/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

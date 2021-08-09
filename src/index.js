@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs');
 const path = require('path');
 const list = [];
@@ -6,7 +8,6 @@ if(curProcess[0] === '-v') {
   console.log(require('../package.json').version);
   process.exit(0);
 }
-console.log(curProcess, 'dff')
 const opt = curProcess.filter((ele) => ele.substring(0, 5).indexOf('-') !== -1);
 const findParam = (param) => {
   const judgePar = curProcess.findIndex((ele) => ele === param);
