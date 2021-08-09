@@ -13,9 +13,7 @@
             ],
             "runtimeExecutable": "node",
             "program": "${workspaceFolder}/src/index.js",
-            "args": [
-                "-v",
-              ],
+            "args": ["-p", "./src/test.js", "-r", "/console.log(.*)/g"]
         }
     ]
 }
