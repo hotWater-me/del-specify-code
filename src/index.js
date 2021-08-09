@@ -2,6 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const list = [];
 const curProcess = process.argv.slice(2);
+if(curProcess[0] === '-v') {
+  console.log(require('../package.json').version);
+  process.exit(0);
+}
+console.log(curProcess, 'dff')
 const opt = curProcess.filter((ele) => ele.substring(0, 5).indexOf('-') !== -1);
 const findParam = (param) => {
   const judgePar = curProcess.findIndex((ele) => ele === param);
@@ -43,7 +48,7 @@ const delConsole = (filePath, regParam) => {
   });
 };
 
-if (setFile.param && setReg.param) {
+if (setFile && setReg && setFile.param && setReg.param) {
   new Promise((resolve) => {
     console.log('Start Execution');
     resolve();
