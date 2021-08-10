@@ -8,8 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "delCon": "./src/index.js -p ./src/test.js -r /console\\.log\\(.*\\)/g ",
-    "debug": "node --inspect-brk=9229 ./src/index.js -p ./src -r /consol/g"
+    "delCon": "del-specify-code -p ./src/test.js -r /console\\.log\\(.*\\)/g "
   },
   "author": "",
   "license": "ISC",
