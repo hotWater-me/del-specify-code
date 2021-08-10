@@ -1,17 +1,24 @@
 {
   "name": "del-specify-code",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "src/index.js",
   "bin": {
     "del-specify-code": "src/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "delCon": "del-specify-code -p ./src/test.js -r /console\\.log\\(.*\\)/g "
   },
+  "files": [
+    "src"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "prettier": "^2.3.2"
+  },
+  "devDependencies": {
+    "@alipay/del-specify-code": "^1.0.2"
   }
 }

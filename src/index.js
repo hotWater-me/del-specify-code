@@ -5,6 +5,7 @@ const path = require('path');
 const list = [];
 const curProcess = process.argv.slice(2);
 if (curProcess[0] === '-v') {
+  console.log(require('../package.json').version);
   process.exit(0);
 }
 const opt = curProcess.filter((ele) => ele.substring(0, 5).indexOf('-') !== -1);
