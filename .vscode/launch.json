@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "command": "tnpm run delCon",
+            "name": "tnpm run delCon",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
@@ -14,6 +20,7 @@
             "runtimeExecutable": "node",
             "program": "${workspaceFolder}/src/index.js",
             "args": ["-p", "./src/test.js", "-r", "/console.log(.*)/g"]
-        }
+        },
+
     ]
 }

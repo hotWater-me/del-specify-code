@@ -7,11 +7,16 @@
     "del-specify-code": "src/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "delCon": "./src/index.js -p ./src/test.js -r /console\\.log\\(.*\\)/g ",
+    "debug": "node --inspect-brk=9229 ./src/index.js -p ./src -r /consol/g"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "prettier": "^2.3.2"
+  },
+  "devDependencies": {
+    "@alipay/del-specify-code": "^1.0.1"
   }
 }
