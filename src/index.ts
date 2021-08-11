@@ -1,15 +1,21 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const list = [];
+import fs from 'fs';
+import path from 'path';
+
+const list: string[] = [];
+interface settingType {
+  opt?: string;
+  param?: string;
+}
+
 const curProcess = process.argv.slice(2);
 if (curProcess[0] === '-v') {
   console.log(require('../package.json').version);
   process.exit(0);
 }
 const opt = curProcess.filter((ele) => ele.substring(0, 5).indexOf('-') !== -1);
-const findParam = (param) => {
+const findParam = (param: string): settingType => {
   const judgePar = curProcess.findIndex((ele) => ele === param);
   if (
     judgePar !== -1 &&
@@ -21,29 +27,33 @@ const findParam = (param) => {
   return { opt: param };
 };
 
-const allParam = opt.map((ele) => {
+const allParam: settingType[] = opt.map((ele) => {
   return findParam(ele);
 });
-let setFile = allParam.find(
+let setFile: any = allParam.find(
   (item) => item.opt === '--path' || item.opt === '-p',
 );
-let setReg = allParam.find((item) => item.opt === '--reg' || item.opt === '-r');
+let setReg: any = allParam.find(
+  (item) => item.opt === '--reg' || item.opt === '-r',
+);
 
 if (!setReg) {
-  const regTemp = require('../.del-specify-code.json').reg;
-  setReg = { param: regTemp };
+  const curPath =  path.join(process.cwd(), '.del-specify-code.json');
+  const regTemp = require(curPath).reg;
+  setReg = { param: regTemp } as settingType;
 }
 if (!setFile) {
-  const pathTemp = require('../.del-specify-code.json').path;
-  setFile = { param: pathTemp };
+  const curPath =  path.join(process.cwd(), '.del-specify-code.json');
+  const pathTemp = require(curPath).path;
+  setFile = { param: pathTemp } as settingType;
 }
 
-function listFile(dir) {
+function listFile(dir: string) {
   if (dir.charAt(0) === '.') {
     dir = path.join(process.cwd(), dir);
   }
   const arr = fs.readdirSync(dir);
-  arr.forEach(function (item) {
+  arr.forEach(function (item: string) {
     var fullpath = path.join(dir, item);
     var stats = fs.statSync(fullpath);
     if (stats.isDirectory()) {
@@ -54,7 +64,7 @@ function listFile(dir) {
   });
   return list;
 }
-const delMatch = (filePath, regParam) => {
+const delMatch = (filePath: string[], regParam: string) => {
   try {
     filePath.forEach((ele) => {
       const data = fs.readFileSync(ele);
@@ -67,7 +77,7 @@ const delMatch = (filePath, regParam) => {
   }
 };
 
-const delFile = (singlefile, regParam) => {
+const delFile = (singlefile: string, regParam: string) => {
   try {
     const data = fs.readFileSync(singlefile);
     const parse = data.toString().replace(eval(regParam), '');
@@ -78,11 +88,11 @@ const delFile = (singlefile, regParam) => {
   }
 };
 
-if (setFile && setReg && setFile.param && setReg.param) {
-  new Promise((resolve) => {
+if (setFile?.param && setReg?.param) {
+  new Promise<void>((resolve) => {
     resolve();
   }).then(() => {
-    if (fs.lstatSync(setFile.param).isFile()) {
+    if (fs.lstatSync(setFile?.param).isFile()) {
       delFile(setFile.param, setReg.param);
     } else {
       delMatch(listFile(setFile.param), setReg.param);
