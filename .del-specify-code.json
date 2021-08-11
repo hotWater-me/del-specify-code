@@ -1,0 +1,4 @@
+{
+    "reg": "/const curName = userInfo\\?.nickName \\|\\| userInfo\\?.realName;/g",
+    "path": "/Users/wangyunpeng/Desktop/backup/data-asset-management/src/pages/Property/index.js"
+}

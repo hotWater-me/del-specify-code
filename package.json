@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "delCon": "del-specify-code -p ./src/test.js -r /console\\.log\\(.*\\)/g "
+    "delCon": "./src/index.js -p ./src/test.js -r /console\\.log\\(.*\\)/g",
+    "delSpa": "./src/index.js"
   },
   "files": [
     "src"

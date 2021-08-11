@@ -29,6 +29,15 @@ let setFile = allParam.find(
 );
 let setReg = allParam.find((item) => item.opt === '--reg' || item.opt === '-r');
 
+if (!setReg) {
+  const regTemp = require('../.del-specify-code.json').reg;
+  setReg = { param: regTemp };
+}
+if (!setFile) {
+  const pathTemp = require('../.del-specify-code.json').path;
+  setFile = { param: pathTemp };
+}
+
 function listFile(dir) {
   if (dir.charAt(0) === '.') {
     dir = path.join(process.cwd(), dir);
@@ -46,29 +55,40 @@ function listFile(dir) {
   return list;
 }
 const delMatch = (filePath, regParam) => {
-  filePath.forEach((ele) => {
-    const data = fs.readFileSync(ele);
-    const parse = data.toString().replace(eval(regParam), '');
-    fs.writeFileSync(ele, parse);
-  });
+  try {
+    filePath.forEach((ele) => {
+      const data = fs.readFileSync(ele);
+      const parse = data.toString().replace(eval(regParam), '');
+      fs.writeFileSync(ele, parse);
+      console.log('执行成功');
+    });
+  } catch (error) {
+    console.log('执行失败');
+  }
 };
 
 const delFile = (singlefile, regParam) => {
-  const data = fs.readFileSync(singlefile);
-  const parse = data.toString().replace(eval(regParam), '');
-  fs.writeFileSync(singlefile, parse);
-}
+  try {
+    const data = fs.readFileSync(singlefile);
+    const parse = data.toString().replace(eval(regParam), '');
+    fs.writeFileSync(singlefile, parse);
+    console.log('执行成功');
+  } catch (e) {
+    console.log('执行失败');
+  }
+};
 
 if (setFile && setReg && setFile.param && setReg.param) {
   new Promise((resolve) => {
     resolve();
   }).then(() => {
     if (fs.lstatSync(setFile.param).isFile()) {
-      delFile(setFile.param, setReg.param)
+      delFile(setFile.param, setReg.param);
     } else {
       delMatch(listFile(setFile.param), setReg.param);
     }
   });
 } else {
+  console.log('缺少path或reg');
   process.exit(1);
-};
+}
