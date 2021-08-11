@@ -63,7 +63,9 @@ function listFile(dir: string) {
     }
   });
   return list;
-}
+};
+// TODO  console颜色需要改变 错误为红色 正确为绿色; 
+// TODO  错误也需要console  而且相应的颜色 也需要变
 const delMatch = (filePath: string[], regParam: string) => {
   try {
     filePath.forEach((ele) => {
