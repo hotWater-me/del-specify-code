@@ -13,7 +13,7 @@
     "dev": "tsc --incremental && tnpm run delCon"
   },
   "files": [
-    "src"
+    "dist"
   ],
   "author": "",
   "license": "ISC",
