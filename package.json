@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "delCon": "del-specify-code -p ./src/test.js -r /console\\.log\\(.*\\)/g",
     "delSpa": "del-specify-code",
-    "dev": "tsc --incremental && tnpm run delSpa",
+    "delLocal": "./dist/index.js -p ./src/test.js -r /console\\.log\\(.*\\)/g",
+    "dev": "tsc --incremental && tnpm run delLocal",
     "build": "rimraf dist && tsc"
   },
   "files": [
