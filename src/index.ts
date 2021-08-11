@@ -38,11 +38,13 @@ let setReg: any = allParam.find(
 );
 
 if (!setReg) {
-  const regTemp = require('../.del-specify-code.json').reg;
+  const curPath =  path.join(process.cwd(), '.del-specify-code.json');
+  const regTemp = require(curPath).reg;
   setReg = { param: regTemp } as settingType;
 }
 if (!setFile) {
-  const pathTemp = require('../.del-specify-code.json').path;
+  const curPath =  path.join(process.cwd(), '.del-specify-code.json');
+  const pathTemp = require(curPath).path;
   setFile = { param: pathTemp } as settingType;
 }
 

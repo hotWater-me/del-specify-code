@@ -1,16 +1,17 @@
 {
   "name": "del-specify-code",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "",
   "main": "src/index.js",
   "bin": {
-    "del-specify-code": "src/index.js"
+    "del-specify-code": "dist/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "delCon": "./dist/index.js -p ./src/test.js -r /console\\.log\\(.*\\)/g",
-    "delSpa": "./dist/index.js",
-    "dev": "tsc --incremental && tnpm run delCon"
+    "delCon": "del-specify-code -p ./src/test.js -r /console\\.log\\(.*\\)/g",
+    "delSpa": "del-specify-code",
+    "dev": "tsc --incremental && tnpm run delSpa",
+    "build": "rimraf dist && tsc"
   },
   "files": [
     "dist"
@@ -21,8 +22,9 @@
     "prettier": "^2.3.2"
   },
   "devDependencies": {
-    "@alipay/del-specify-code": "^1.0.2",
+    "@alipay/del-specify-code": "^1.0.5",
     "@types/node": "^16.4.13",
+    "rimraf": "^3.0.2",
     "typescript": "^4.3.5"
   }
 }
