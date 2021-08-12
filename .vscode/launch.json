@@ -5,10 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "tnpm run delSpa",
-            "name": "tnpm run delCon",
+            "command": "tnpm run version",
+            "name": "tnpm run version",
             "request": "launch",
-            "type": "node-terminal"
+            "type": "node-terminal",
+            "program": "${workspaceFolder}/dist/index.js",
         },
         {
             "type": "node",

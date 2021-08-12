@@ -54,8 +54,8 @@ function listFile(dir: string) {
   }
   const arr = fs.readdirSync(dir);
   arr.forEach(function (item: string) {
-    var fullpath = path.join(dir, item);
-    var stats = fs.statSync(fullpath);
+    const fullpath = path.join(dir, item);
+    const stats = fs.statSync(fullpath);
     if (stats.isDirectory()) {
       listFile(fullpath);
     } else {
@@ -63,7 +63,8 @@ function listFile(dir: string) {
     }
   });
   return list;
-};
+}
+
 // TODO  console颜色需要改变 错误为红色 正确为绿色; 
 // TODO  错误也需要console  而且相应的颜色 也需要变
 const delMatch = (filePath: string[], regParam: string) => {

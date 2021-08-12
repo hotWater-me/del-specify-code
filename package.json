@@ -12,7 +12,9 @@
     "delSpa": "del-specify-code",
     "delLocal": "./dist/index.js -p ./src/test.js -r /console\\.log\\(.*\\)/g",
     "dev": "tsc --incremental && tnpm run delLocal",
-    "build": "rimraf dist && tsc"
+    "build": "rimraf dist && tsc",
+    "version": "tsc --incremental && ./dist/index.js -v",
+    "lint:fix": "eslint --fix src --ext .ts"
   },
   "files": [
     "dist"
@@ -25,6 +27,9 @@
   "devDependencies": {
     "@alipay/del-specify-code": "^1.0.5",
     "@types/node": "^16.4.13",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
+    "eslint": "^7.32.0",
     "rimraf": "^3.0.2",
     "typescript": "^4.3.5"
   }
