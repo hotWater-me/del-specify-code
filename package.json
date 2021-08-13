@@ -15,7 +15,7 @@
     "build": "rimraf dist && tsc",
     "version": "tsc --incremental && ./dist/index.js -v",
     "lint:fix": "eslint --fix src --ext .ts",
-    "watch:dev": "onchange src/*.ts -- tnpm run dev '{{file}}'"
+    "watch:dev": "onchange -v src/*.ts -- tnpm run dev"
   },
   "files": [
     "dist"
