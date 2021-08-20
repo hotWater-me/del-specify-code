@@ -17,7 +17,7 @@ command
 ```json
  {
     "reg": "/const curName = userInfo\\?.nickName \\|\\| userInfo\\?.realName;/g",
-    "path": "/Users/wangyunpeng/Desktop/backup/data-asset-management/src/pages/Property/index.js"
+    "path": "/Users/wangyunpeng/Desktop/backup/index.js"
 }
 ```
 备注: reg有空格or正则表达式比较长,需要使用配置文件。
